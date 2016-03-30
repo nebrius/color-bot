@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+
+<script>
+function onSubmitClicked() {
+  const value = document.getElementById('color').value;
+  const req = new XMLHttpRequest();
+  req.onreadystatechange = function() {
+    if (req.readyState == 4) {
+      switch(req.status) {
+        case 200:
+          document.getElementById('status').innerText = req.responseText;
+          break;
+
+        case 404:
+          document.getElementById('status').innerText = 'Your color was too awesome for this bot, try again!';
+          break;
+
+        default:
+          break;
+      }
+    }
+  };
+  req.open('POST', '/api/color', true);
+  req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  req.send(`color=${value}`);
+}
+</script>
+
+</head>
+<body>
+  <div>What is your favorite color?</div>
+  <div><input type="text" id="color" /></div>
+  <div><button onclick="onSubmitClicked()">Submit</button>
+  <div id="status" />
+</body>
+</html>
