@@ -5,6 +5,41 @@
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+.title {
+  background-color: purple;
+  color: white;
+  margin: 0;
+  padding: 40px 20px 20px 20px;
+  font-weight: 100;
+}
+.input {
+  padding: 10px;
+  margin: 20px;
+}
+.submit {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  background-color: limegreen;
+  border: 1px solid #999;
+  border-radius: 2px;
+}
+
+.submit:hover {
+  border: 1px solid #888;
+}
+
+#status {
+  margin: 20px;
+  font-size: 18px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 </style>
 
@@ -36,9 +71,11 @@ function onSubmitClicked() {
 
 </head>
 <body>
-  <div>What is your favorite color?</div>
-  <div><input type="text" id="color" /></div>
-  <div><button onclick="onSubmitClicked()">Submit</button>
-  <div id="status" />
+  <h1 class="title">What is your favorite color?</h1>
+  <div class="content" >
+    <div><input class="input" type="text" id="color" /></div>
+    <div><button class="submit" onclick="onSubmitClicked()">Submit</button></div>
+    <div id="status" />
+  </div>
 </body>
 </html>

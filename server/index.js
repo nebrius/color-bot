@@ -30,12 +30,8 @@ app.post('/api/color', (req, res) => {
     responseText = `${stats[color]} other ${stats[color] === 1 ? 'person' : 'people'} also chose ${color}, awesome!`;
     stats[color]++;
   }
-  request.post(`http://${PI_ADDRESS}:${PI_PORT}/color`).form({ color }).on('response', (err) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.send(responseText);
-    }
+  request.post(`http://${PI_ADDRESS}:${PI_PORT}/color`).form({ color }).on('response', () => {
+    res.send(responseText);
   });
 });
 

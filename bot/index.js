@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 //const PORT = '/dev/tty.usbmodem1421';
 //const PORT = '/dev/cu.usbserial-DA00T0D6';
-const PORT = '/dev/ttyAMA0';
+const PORT = '/dev/ttyUSB0';
 
 const serialPort = new SerialPort(PORT, {
   baudrate: 115200
@@ -83,7 +83,6 @@ serialPort.on('open', (err) => {
     console.log(`User requested to set color ${req.body.color}`);
     const rgb = convertCssColorNameToHex(req.body.color);
     const pixel = space.rgb.hsl([ parseInt(`0x${rgb[1]}${rgb[2]}`), parseInt(`0x${rgb[3]}${rgb[4]}`), parseInt(`0x${rgb[5]}${rgb[6]}`) ]);
-    pixel[1] = 100;
     pixel[2] = 0;
     currentState = STATE_FLASHING;
     currentPixelSet = [ ([]).concat(pixel), ([]).concat(pixel), ([]).concat(pixel) ];
