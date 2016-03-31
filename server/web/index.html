@@ -11,7 +11,7 @@ body {
   background-color: purple;
   color: white;
   margin: 0;
-  padding: 40px 20px 20px 20px;
+  padding: 20px;
   font-weight: 100;
 }
 .input {
@@ -28,7 +28,11 @@ body {
 }
 
 .submit:hover {
-  border: 1px solid #888;
+  border: 1px solid #777;
+}
+
+.submit:active {
+  background-color: green;
 }
 
 #status {
@@ -61,6 +65,10 @@ function onSubmitClicked() {
         default:
           break;
       }
+      document.getElementById('color').value = '';
+      setTimeout(() => {
+        document.getElementById('status').innerText = '';
+      }, 20000);
     }
   };
   req.open('POST', '/api/color', true);
@@ -72,10 +80,10 @@ function onSubmitClicked() {
 </head>
 <body>
   <h1 class="title">What is your favorite color?</h1>
-  <div class="content" >
-    <div><input class="input" type="text" id="color" /></div>
-    <div><button class="submit" onclick="onSubmitClicked()">Submit</button></div>
+  <form class="content" onsubmit="return false;">
+    <div><input class="input" type="text" id="color" placeholder="Enter your favorite color!" /></div>
+    <div><button class="submit" onclick="onSubmitClicked();">Submit</button></div>
     <div id="status" />
-  </div>
+  </form>
 </body>
 </html>
