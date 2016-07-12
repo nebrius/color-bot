@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Server",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/server/index.js",
+      "stopOnEntry": false,
+      "args": [],
+      "cwd": "${workspaceRoot}/server",
+      "runtimeExecutable": null,
+      "env": {
+      "NODE _ENV": "development"
+      },
+      "externalConsole": false,
+      "sourceMaps": false,
+      "outDir": null
+    },
+    {
+      "name": "Bot",
+      "type": "node",
+      "request": "attach",
+      "port": 5858,
+      "address": "192.168.2.3",
+      "restart": false,
+      "sourceMaps": false,
+      "outDir": null,
+      "localRoot": "${workspaceRoot}/bot",
+      "remoteRoot": "/home/pi/bot"
+    }
+  ]
+}
